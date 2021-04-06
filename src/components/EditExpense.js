@@ -8,13 +8,15 @@ const EditExpense = (props) => (
         
         
         <h1>EditExpense</h1>
+        <h1>{ props.match.params.id}</h1>
         <ExpenseForm
+            
             expense={props.expense}
-            onsubmit={(expense) => {
-               // props.dispatch(editExpense(props.expense.id,expense))
+            onSubmit={(expense) => {
+                props.dispatch(editExpense(props.expense.id,expense))
                // props.dispatch(editExpense(props.expenses.id, expense))
                 //props.history.push('/')
-                console.log(props.expense.id)
+                //console.log(props.expense.id)
                 console.log(expense)
         }}/>
     </div>

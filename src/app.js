@@ -14,7 +14,7 @@ import store from './store/configureStore';
 import Header from './components/Header'
 import 'react-dates/lib/css/_datepicker.css'
 import { firebase } from  './firebase/firebase'
-import LoginPage from './components/LoginPage'
+import { LoginPage } from './components/LoginPage'
 
 
 
@@ -48,7 +48,7 @@ const Routess = ()=> (
         <div>
             <Header/>
             <Switch>
-                <Route path='/' component={LoginPage} exact={true}/>
+                {/* //<Route path='/' component={LoginPage} exact={true}/> */}
                 <Route path="/dashboard" component={Dashboard} exact={true}/>
                 <Route path="/editExpense/:id" component={EditExpense}   />
                 <Route path="/addExpense" component={AddExpense} />

@@ -41,11 +41,13 @@ class ExpenseForm extends React.Component{
         })
     }
     onDateChange = (createdAt) => {
-        this.setState(() => {
-            return {
-                createdAt
-            }
-        })
+        if (createdAt) {
+            this.setState(() => {
+                return {
+                    createdAt
+                }
+            })
+        }
     }
     onFocusChange = ({ focused }) => {
         this.setState(() => {
@@ -79,7 +81,7 @@ class ExpenseForm extends React.Component{
                 }
             })
             console.log("submitted")
-            this.props.onsubmit({
+            this.props.onSubmit({
                 description: this.state.description,
                 note: this.state.note,
                 createdAt: this.state.createdAt,

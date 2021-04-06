@@ -9,11 +9,13 @@ import numeral from 'numeral'
 
 export const ExpenseListItem = ({ id,dispatch,description, amount, createdAt }) => (
     <div>
-        <Link to={`/EditExpense/${id}`}>{description}</Link>
+        {console.log(id)}
+        <Link to={`editExpense/${id}`}>{description}</Link>
         <p>
             {numeral(amount).format('$0,00.00')}
         -
         {moment(createdAt).format('MMMM Do,YYYY')}</p>
+        <p>{ id}</p>
         {/* <button onClick={() => {
             dispatch(removeExpense({id}))
         }}>Remove</button> */}

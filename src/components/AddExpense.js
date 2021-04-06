@@ -7,14 +7,15 @@ import ExpenseForm from './ExpenseForm'
 const AddExpense = (props) => (
     <div>
         <h1>AddExpense</h1>
-        <ExpenseForm onsubmit={(expense) => {
-            props.dispatch(startAddExpense(expense))
-            props.history.push('/')
+        <ExpenseForm onSubmit={(expense) => {
+             props.dispatch(addExpense(expense))
+             props.history.push('/dashboard ')
+            console.log(expense);
         } }/>
     </div>
 )
 const mapDispatchToProps = (dispatch) => ({
   startAddExpense:(expense)=> dispatch(startAddExpense(expense))   
 })
-export default connect(undefined,mapDispatchToProps)(AddExpense)
+export default connect()(AddExpense)
     

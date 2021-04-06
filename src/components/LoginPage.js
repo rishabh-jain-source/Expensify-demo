@@ -1,7 +1,14 @@
 import React from 'react'
-const LoginPage = () => (
+import {connect} from 'enzyme'
+import {startLogin} from '../actions/auth'
+export const LoginPage = ({startLogin}) => (
     <div>
-        <button>Login</button>
+        <button onClick={startLogin}>Login</button>
     </div>
 )
-export default LoginPage;
+
+// const mapStateToProps = (dispatch) => ({
+//     startLogin:()=>dispatch(startLogin())
+// })
+
+// export default connect(mapStateToProps)(LoginPage);
