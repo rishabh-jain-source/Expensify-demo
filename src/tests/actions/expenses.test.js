@@ -26,7 +26,7 @@ test("ADD EXPENSE", () => {
         type: 'ADD_EXPENSE',
         expense: {
             ...addDATA,
-            id: expect.any(String)
+            //id: expect.any(String)
         }
     })
 })

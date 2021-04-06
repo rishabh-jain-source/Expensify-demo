@@ -1,22 +1,32 @@
 import uuid from 'uuid';
+import { firebase,database } from '../firebase/firebase';
 // ADD_EXPENSE
-export const addExpense = (
-    {
+export const addExpense = (expense= {}) => ({
+    type: 'ADD_EXPENSE',
+    expense
+    
+  });
+
+  export const startAddExpense = (expensedata={}) => {
+  return (dispatch)=> {
+    const {
       description = '',
       note = '',
       amount = 0,
       createdAt = 0
-    } = {}
-  ) => ({
-    type: 'ADD_EXPENSE',
-    expense: {
-      id: uuid(),
-      description,
-      note,
-      amount,
-      createdAt
+    } = expensedata
+    const expense={description,note,amount,createdAt}
+    firebase.database().ref().push(expense).then((ref) => {
+      dispatch(addExpense({
+        id: ref.key,
+        ...expense
+      }))
+    })
     }
-  });
+  
+      
+    
+  }
   
   // REMOVE_EXPENSE
   export const removeExpense = ({ id } = {}) => ({
