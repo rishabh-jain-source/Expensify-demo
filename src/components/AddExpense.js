@@ -17,5 +17,5 @@ const AddExpense = (props) => (
 const mapDispatchToProps = (dispatch) => ({
   startAddExpense:(expense)=> dispatch(startAddExpense(expense))   
 })
-export default connect()(AddExpense)
+export default connect(mapDispatchToProps)(AddExpense)
     

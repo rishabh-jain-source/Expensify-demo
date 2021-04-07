@@ -1,5 +1,6 @@
 import React from 'react'
-import {connect} from 'enzyme'
+import {connect} from 'react-redux'
+import { signInWithGoogle } from './../firebase/firebase'
 import {startLogin} from '../actions/auth'
 export const LoginPage = ({startLogin}) => (
     <div>
@@ -7,8 +8,8 @@ export const LoginPage = ({startLogin}) => (
     </div>
 )
 
-// const mapStateToProps = (dispatch) => ({
-//     startLogin:()=>dispatch(startLogin())
-// })
+const mapStateToProps = (dispatch) => ({
+    startLogin:()=>dispatch(startLogin())
+})
 
-// export default connect(mapStateToProps)(LoginPage);
+export default connect(undefined,mapStateToProps)(LoginPage);

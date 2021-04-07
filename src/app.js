@@ -11,10 +11,10 @@ import { setTextFilter } from './actions/filters'
 import getVisibleExpenses from './selectors/getVisible'
 import './styles/style.scss'
 import store from './store/configureStore';
-import Header from './components/Header'
+import {Header} from './components/Header'
 import 'react-dates/lib/css/_datepicker.css'
-import { firebase } from  './firebase/firebase'
-import { LoginPage } from './components/LoginPage'
+import { auth} from  './firebase/firebase'
+import  LoginPage  from './components/LoginPage'
 
 
 
@@ -48,7 +48,7 @@ const Routess = ()=> (
         <div>
             <Header/>
             <Switch>
-                {/* //<Route path='/' component={LoginPage} exact={true}/> */}
+                <Route path='/' component={LoginPage} exact={true}/>
                 <Route path="/dashboard" component={Dashboard} exact={true}/>
                 <Route path="/editExpense/:id" component={EditExpense}   />
                 <Route path="/addExpense" component={AddExpense} />
@@ -65,11 +65,11 @@ const jsx = (
     </Provider>
 )
 
-firebase.auth().onAuthStateChanged((user) => {
+auth.onAuthStateChanged((user) => {
     if (user) {
         console.log('User login')
     }
-    else console.log('log Out')
+    else {console.log('log Out')}
 })
 
 

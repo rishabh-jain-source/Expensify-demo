@@ -20,6 +20,7 @@ export const addExpense = (
 });
 
 
+
   export const startAddExpense = (expensedata={}) => {
   return (dispatch)=> {
     const {
@@ -29,16 +30,13 @@ export const addExpense = (
       createdAt = 0
     } = expensedata
     const expense={description,note,amount,createdAt}
-    firebase.database().ref().push(expense).then((ref) => {
+    database.ref('expenses').push(expense).then((ref) => {
       dispatch(addExpense({
         id: ref.key,
         ...expense
       }))
     })
-    }
-  
-      
-    
+    } 
   }
   
   // REMOVE_EXPENSE
