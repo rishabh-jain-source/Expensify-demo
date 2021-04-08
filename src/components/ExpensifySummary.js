@@ -9,7 +9,7 @@ export const ExpensifySummary = ({ expenseCount, expenseTotal }) => {
     return (
         <div>
             <h1>viewing {expenseCount} {expenseWord} with total of { expenseFormat}</h1>
-        </div >
+        </div>
     )
 }
 const mapStateToProps=(state)=> {

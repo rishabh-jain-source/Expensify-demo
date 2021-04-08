@@ -9,9 +9,9 @@ export const ExpenseList = (props) => (
         </h1>
         <p>{props.expenses.length}</p>
        
-        <p>{props.expenses.map((expense) => {
+        {props.expenses.map((expense) => {
             return <ConnectedExpenseListItem key={expense.id}  {...expense}/>
-        })}</p>
+        })}
     </div>
 )
 const mapPropsTostate = (state) => {

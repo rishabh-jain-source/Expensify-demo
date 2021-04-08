@@ -52,5 +52,11 @@ test('on submit props', ()=>{
     wrapper.find('form').simulate('submit', {
         preventDefault:()=>{}
     })
-    expect(testSpy).toHaveBeenLastCalledWith(expense)
+    //expect(wrapper.state(error)).toBe('')
+    expect(testSpy).toHaveBeenLastCalledWith({
+        description: expenses[0].description,
+        amount: expenses[0].amount,
+        note: expenses[0].note,
+        createdAt:`${expenses[0].createdAt}`
+    })
 })

@@ -2,6 +2,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {startLogout} from '../actions/auth'
+
+const sayhello=()=>{
+    return (
+        console.log('Hello')
+    )
+}
 export const Header = ({startLogout}) => (
     <div>
         <h1>Header</h1>
@@ -10,7 +16,8 @@ export const Header = ({startLogout}) => (
 
         <NavLink to="/addExpense" activeClassName="is-active">Add Expense</NavLink>
         <NavLink to="/help" activeClassName="is-active">Help</NavLink>
-        <button onClick={startLogout}>Logout</button>
+        <button onClick={sayhello}>Hello</button>
+        
     </div>
 )
 const mapDispatchToProps = (dispatch) => ({

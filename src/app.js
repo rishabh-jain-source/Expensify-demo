@@ -6,20 +6,21 @@ import EditExpense from './components/EditExpense'
 import Dashboard from './components/Dashboard'
 import Help from './components/Help'
 import {Provider} from 'react-redux'
-import { addExpense } from './actions/expenses'
+ import { startSetExpense } from './actions/expenses'
 import { setTextFilter } from './actions/filters'
 import getVisibleExpenses from './selectors/getVisible'
 import './styles/style.scss'
 import store from './store/configureStore';
 import {Header} from './components/Header'
 import 'react-dates/lib/css/_datepicker.css'
-import { auth} from  './firebase/firebase'
-import  LoginPage  from './components/LoginPage'
+import { firebase} from  './firebase/firebase'
+import LoginPage from './components/LoginPage'
+import './playground/promises'
 
 
 
-store.dispatch(addExpense({ description: 'rent',amount:6000,createdAt:100 }));
-store.dispatch(addExpense({ description: 'bill',amount:8000,createdAt:10 }));
+// store.dispatch(addExpense({ description: 'rent',amount:6000,createdAt:100 }));
+// store.dispatch(addExpense({ description: 'bill',amount:8000,createdAt:10 }));
 store.dispatch(setTextFilter('bill'))
 
 const state = store.getState();
@@ -65,16 +66,19 @@ const jsx = (
     </Provider>
 )
 
-auth.onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         console.log('User login')
     }
     else {console.log('log Out')}
 })
-
-
-ReactDOM.render(jsx,document.getElementById('app'))
+ReactDOM.render(<p>Loading...</p>,document.getElementById('app'))
+store.dispatch(startSetExpense()).then(() => {
+    ReactDOM.render(jsx,document.getElementById('app'))
+})
     
+
+
 
     
 

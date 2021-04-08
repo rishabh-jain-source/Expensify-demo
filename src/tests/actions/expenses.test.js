@@ -1,4 +1,10 @@
-import { removeExpense ,editExpense,addExpense} from '../../actions/expenses'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import { removeExpense, editExpense, addExpense, startAddExpense,setExpense } from '../../actions/expenses'
+import expenses from '../fixtures/expenses'
+
+const createMockStore=configureMockStore([thunk])
+
 test("add Expense test", () => {
     const action = removeExpense({ id: 'abc123' })
     expect(action).toEqual({
@@ -15,18 +21,35 @@ test("add Expense test", () => {
 //     })
 // })
 test("ADD EXPENSE", () => {
-    const addDATA = {
-        description : 'rent',
-      note :'january',
-      amount : 100,
-      createdAt : 100
-    }
-    const action = addExpense(addDATA)
+    const action = addExpense(expenses[1])
     expect(action).toEqual({
         type: 'ADD_EXPENSE',
         expense: {
-            ...addDATA,
+            ...expenses[1],
             //id: expect.any(String)
         }
     })
+})
+
+test('should test database and store data', () => {
+    const store = createMockStore({});
+    const expenseData = {
+        description: 'coffee',
+        amount: '12',
+        note: 'break',
+        createdAt:'9'
+    }
+    store.dispatch(startAddExpense(expenseData)).then(() => {
+        expect(1).toBe(11);
+        
+    })
+    
+})
+
+test('setExpense test', () => {
+    const action = setExpense(expenses);
+    expect(action).toEqual({
+        type:'SET_EXPENSES',
+        expenses
+    });
 })

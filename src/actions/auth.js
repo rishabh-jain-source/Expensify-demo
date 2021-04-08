@@ -1,11 +1,12 @@
-import { auth, provider } from '../firebase/firebase'
+import {  provider,firebase } from '../firebase/firebase'
 export const startLogin = () => {
     return()=> {
-        return auth.signInWithPopup(provider)
+        return firebase.auth().signInWithPopup(provider)
     }
 }
-export const startLogout = () => {
+ const startLogout = () => {
     return () => {
-        return auth.signOut();
+        return firebase.auth().signOut();
     }
 }
+export {startLogout}

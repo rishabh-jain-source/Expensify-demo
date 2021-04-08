@@ -1,5 +1,5 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import * as firebase from 'firebase';
+
 const config={
     apiKey: "AIzaSyDu_xMuAHVJtKOXomWQ47yLNwz6a700plA",
     authDomain: "expensify-62751.firebaseapp.com",
@@ -10,6 +10,8 @@ const config={
     appId: "1:6372854601:web:daa91dde9b446ca3bb2898"
 };
 firebase.initializeApp(config);
-export const auth = firebase.auth();
-export const provider = new firebase.auth.GoogleAuthProvider();
+const database = firebase.database();
+
+ const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export { firebase,provider,database }
