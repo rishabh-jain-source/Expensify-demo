@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { signInWithGoogle } from './../firebase/firebase'
 import {startLogin} from '../actions/auth'
 export const LoginPage = ({startLogin}) => (
     <div>
@@ -8,8 +7,8 @@ export const LoginPage = ({startLogin}) => (
     </div>
 )
 
-const mapStateToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
     startLogin:()=>dispatch(startLogin())
 })
 
-export default connect(undefined,mapStateToProps)(LoginPage);
+export default connect(undefined,mapDispatchToProps)(LoginPage);

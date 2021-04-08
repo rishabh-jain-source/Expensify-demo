@@ -4,9 +4,10 @@ export const startLogin = () => {
         return firebase.auth().signInWithPopup(provider)
     }
 }
- const startLogout = () => {
-    return () => {
-        return firebase.auth().signOut();
+ export const startLogout = () => {
+     return () => {
+        console.log('logout')
+        return firebase.auth().signOut(provider);
     }
 }
-export {startLogout}
+//export {startLogout}

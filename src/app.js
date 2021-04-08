@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Link, NavLink, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Link, NavLink, Route, Switch,Router } from 'react-router-dom'
 import AddExpense from './components/AddExpense'
 import EditExpense from './components/EditExpense'
 import Dashboard from './components/Dashboard'
@@ -16,9 +16,11 @@ import 'react-dates/lib/css/_datepicker.css'
 import { firebase} from  './firebase/firebase'
 import LoginPage from './components/LoginPage'
 import './playground/promises'
+import createHistory from 'history/createBrowserHistory'
 
 
 
+export const history = createHistory();
 // store.dispatch(addExpense({ description: 'rent',amount:6000,createdAt:100 }));
 // store.dispatch(addExpense({ description: 'bill',amount:8000,createdAt:10 }));
 store.dispatch(setTextFilter('bill'))
@@ -45,7 +47,7 @@ const noFound = () =>
 
 
 const Routess = ()=> (
-    <BrowserRouter>
+    <Router history={history}>
         <div>
             <Header/>
             <Switch>
@@ -54,11 +56,10 @@ const Routess = ()=> (
                 <Route path="/editExpense/:id" component={EditExpense}   />
                 <Route path="/addExpense" component={AddExpense} />
                 <Route path="/help" component={Help}/>
-                
                 <Route component={noFound} />
             </Switch>
         </div>
-    </BrowserRouter>
+    </Router>
 )
 const jsx = (
     <Provider store={store}>
@@ -66,11 +67,16 @@ const jsx = (
     </Provider>
 )
 
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log('User login')
+        console.log('User loggedIn')
+        //history.push('/dashboard')
     }
-    else {console.log('log Out')}
+    else {
+       // console.log('log Out')
+        history.push('/dashboard')
+    }
 })
 ReactDOM.render(<p>Loading...</p>,document.getElementById('app'))
 store.dispatch(startSetExpense()).then(() => {
