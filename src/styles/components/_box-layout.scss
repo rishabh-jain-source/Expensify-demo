@@ -1,0 +1,19 @@
+.box-layout {
+    background-color: black;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+}
+.box-layout__box{
+    background-color: fade-out($color: white, $amount: .15);
+    height: 20vh;
+    width: 20vw;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1.2rem 1.6rem;
+}
+.box_layout__title{
+    margin: 0 0 1.2rem 0;
+}

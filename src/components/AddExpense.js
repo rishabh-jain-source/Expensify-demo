@@ -62,14 +62,20 @@ import { startAddExpense } from '../actions/expenses';
 
 export class AddExpense extends React.Component {
   onSubmit = (expense) => {
-      console.log("My Expense data" + JSON.stringify(expense))
+      
     this.props.startAddExpense(expense);
     this.props.history.push('/');
   };
   render() {
     return (
       <div>
-        <h1>Add Expense</h1>
+        <div className="page-header">
+       
+        <div className="content-container"><h1>Add Expense</h1>
+          <div className="page-header__title">
+          </div>
+          </div>
+          </div>
         <ExpenseForm
           onSubmit={this.onSubmit}
         />

@@ -11,14 +11,12 @@ export const ExpenseListItem = ({ id,dispatch,description, amount, createdAt }) 
     <div>
         {console.log(id)}
         <Link to={`editExpense/${id}`}>{description}</Link>
-        <p>
-            {numeral(amount).format('$0,00.00')}
-        -
-        {moment(createdAt).format('MMMM Do,YYYY')}</p>
-        <p>{ id}</p>
-        {/* <button onClick={() => {
-            dispatch(removeExpense({id}))
-        }}>Remove</button> */}
+
+        
+        <p>{numeral(amount).format('$0,00.00')}
+        {console.log(new Date(parseInt(createdAt)))}</p>
+            <p>{moment(new Date(parseInt(createdAt))).format('Do MM YYYY')}
+        </p>
     </div>
 )
 

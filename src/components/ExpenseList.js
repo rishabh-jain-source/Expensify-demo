@@ -3,11 +3,9 @@ import { connect } from 'react-redux'
 import ConnectedExpenseListItem from './ExpenseListItem';
 import getVisibleExpenses from '../selectors/getVisible'
 export const ExpenseList = (props) => (
-    <div>
-        <h1>
-            Expense List
-        </h1>
-        <p>{props.expenses.length}</p>
+    <div className="content-container">
+        <h1 className=".page-header__title">Expense List</h1>
+        <h1 className="table-length">{props.expenses.length}</h1>
        
         {props.expenses.map((expense) => {
             return <ConnectedExpenseListItem key={expense.id}  {...expense}/>

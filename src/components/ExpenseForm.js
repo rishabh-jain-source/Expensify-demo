@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{Fragment} from 'react'
 import moment from 'moment'
 import { SingleDatePicker } from 'react-dates'
 
@@ -21,6 +21,7 @@ class ExpenseForm extends React.Component{
         this.setState(() => {
             return {
                 description
+                
             }
         })
     }
@@ -28,7 +29,11 @@ class ExpenseForm extends React.Component{
         const amount = e.target.value
         
             this.setState(() => {
-                return { amount }
+                return {
+                    amount
+                   
+                }
+                
             })
         
     }
@@ -58,14 +63,14 @@ class ExpenseForm extends React.Component{
             if (!this.state.description) {
                 this.setState(() => {
                     return {
-                        error:'enter description'
+                        error:'Enter Description*'
                     }
                 })
             }
             else {
                 this.setState(() => {
                     return {
-                        error:'enter amount'
+                        error:'Enter Amount*'
                     }
                 })
             }
@@ -86,23 +91,24 @@ class ExpenseForm extends React.Component{
         }
     }
     render() {
-        return (<div>
+        return (<div >
             
-            <form onSubmit={this.formSubmit}>
-                <input type="text" placeholder="description" value={this.state.description} onChange={this.onDescriptionChange}></input>
-                {this.state.error && <p>{ this.state.error  }</p>}
-            <input type="number" placeholder="amount" value={this.state.amount} onChange={this.onAmountChange}></input>
-            <textarea placeholder="Note Optional" value={this.state.note} onChange={this.onNoteChange}></textarea>
+                <form onSubmit={this.formSubmit} className="form" >
+                <input className="text-input input-group" type="text"  placeholder="Description" value={this.state.description} onChange={this.onDescriptionChange}></input>
+                {this.state.error && <p className="error">{ this.state.error  }</p>}
+            <input className="text-input input-group" type="number" placeholder="Amount" value={this.state.amount} onChange={this.onAmountChange}></input>
+            <textarea className="textarea-input input-group" placeholder="Note Optional" value={this.state.note} onChange={this.onNoteChange}></textarea>
             <SingleDatePicker
                 date={this.state.createdAt}
-                onDateChange={this.onDateChange}
+                    onDateChange={() => { this.onDateChange(date) }}
                 focused={this.state.calenderFocused}
                 onFocusChange={this.onFocusChange}
                 numberOfMonths={1}
                 isOutsideRange={()=>{false}}
             />
-                <button>Save</button>
-                </form>
+            </form>
+                <button className="button "  onClick={this.formSubmit} > Save</button>
+            
         </div>
         )
     }

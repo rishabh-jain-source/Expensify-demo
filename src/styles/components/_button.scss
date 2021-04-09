@@ -1,0 +1,46 @@
+// .button{
+//     background:chartreuse;
+//     font-size: 1rem;
+//     font-weight: 300;
+//     padding: 1.2rem;
+//     font-size: 1.3rem;
+//     text-decoration: none;
+// }
+.button--link{
+    
+}
+.button{
+    background: rgb(11, 165, 226);
+    color: white;
+    margin:1rem 0 1rem 0;
+    font-weight: bold ;
+    font-size: 1.2rem;
+    padding: 1.2rem 0 1.2rem 0;
+    width: 25%;
+    border-radius: 1.0rem;
+    text-decoration: none;
+}
+.red-button{
+    background: red;
+}
+.add-button{
+    background: rgb(11, 165, 226);
+    color: white;
+    margin:1rem 0 1rem 0;
+    font-weight: bold ;
+    font-size: 1.2rem;
+    padding: 1.2rem 0 1.2rem 0;
+    width: 30%;
+    border-radius: 1.0rem;
+    margin-top: 1.6rem;
+    text-decoration: none;
+}
+.error{
+    color:red;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.button-flex{
+    display: flex;
+    flex-direction: row;
+}

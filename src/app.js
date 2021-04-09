@@ -71,11 +71,11 @@ const jsx = (
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         console.log('User loggedIn')
-        //history.push('/dashboard')
+        history.push('/dashboard')
     }
     else {
        // console.log('log Out')
-        history.push('/dashboard')
+        //history.push('/dashboard')
     }
 })
 ReactDOM.render(<p>Loading...</p>,document.getElementById('app'))
