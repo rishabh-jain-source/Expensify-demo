@@ -8,8 +8,12 @@ import moment from 'moment'
 import numeral from 'numeral'
 
 export const ExpenseListItem = ({ id,dispatch,description, amount, createdAt }) => (
-    <div>
-        {console.log(id)}
+    <div className="content-container">
+        <div>
+            <div className="show-for-mobile">Expenses</div>
+            <div className="show-for-desktop">Expense</div>
+            <div className="show-for-desktop">Amount</div>
+        </div>
         <Link to={`editExpense/${id}`}>{description}</Link>
 
         
